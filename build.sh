@@ -18,4 +18,13 @@ make install
 cd ..
 rm -rf ./protobuf
 
+# Install gogo, an optimised fork of the Golang generators.
+go get github.com/gogo/protobuf/proto \
+       github.com/gogo/protobuf/protoc-gen-gogo \
+       github.com/gogo/protobuf/gogoproto \
+       github.com/gogo/protobuf/protoc-gen-gogofast \
+       github.com/gogo/protobuf/protoc-gen-gogofaster \
+       github.com/gogo/protobuf/protoc-gen-gogoslick
 
+apt-get purge -y $PACKAGES
+apt-get clean -y
