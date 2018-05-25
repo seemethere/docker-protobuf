@@ -1,14 +1,15 @@
 FROM golang:1.9.2
 
-MAINTAINER Shaun Crampton <shaun@tigera.io>
+MAINTAINER Eli Uriegas <eli.uriegas@docker.com>
 
 RUN apt-get update && apt-get install -y git make autoconf automake libtool unzip
 
 # Clone the initial protobuf library down
 RUN mkdir -p /src
 WORKDIR /src
-ENV PROTOBUF_TAG v3.5.1
-RUN git clone https://github.com/google/protobuf
+ARG PROTOBUF_REF
+ARG PROTOBUF_REPO
+RUN git clone PROTOBUF_REPO
 
 # Switch to protobuf folder and carry out build
 WORKDIR /src/protobuf
